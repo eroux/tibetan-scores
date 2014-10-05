@@ -1,0 +1,32 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tibetanscore}[2014/10/05 v0.1
+  Simple Tibetan score typesetting]
+
+\definecolor{tibetanred}{RGB}{154,3,0}
+\def\neume#1{{\color{gray!150}\footnotesize #1}}
+\newbox\Tempwidth
+\newdimen\tempwidth
+\newbox\Tempwidthtwo
+\newdimen\tempwidthtwo
+\newdimen\tempdepth
+\newdimen\tempwidththree
+
+\def\centerds#1#2{
+  \setbox\Tempwidth=\hbox{#1}%
+  \setbox\Tempwidthtwo=\hbox{#2}%
+  \tempdepth=\ht\Tempwidthtwo %
+  \advance\tempdepth by \dp\Tempwidth %
+  #1%
+  \kern -\wd\Tempwidth %
+  \raise -\tempdepth\hbox to \wd\Tempwidth{%
+    \hss %
+    #2%
+    \hss%
+  }%
+}
+
+\def\meaningful#1{{\color{tibetanred}#1}}
+\def\fixedintercal#1{#1}
+\def\varintercal#1{#1}
+\def\opener#1{#1}
+\def\prolonger#1{#1}
